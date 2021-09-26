@@ -7,7 +7,8 @@ from pyspark.streaming.kafka import KafkaUtils
 
 
 def get_sentiment(tweet):
-    
+    return 1.
+
 def handle_rdd(rdd):
     if not rdd.isEmpty():
         global ss
