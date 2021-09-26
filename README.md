@@ -44,14 +44,21 @@ Hadoop2
 https://hadoop.apache.org/release/2.8.5.html
 
 ### Start Zookeeper
+```
 bayartsogt@ubuntu:~/kafka$ bin/zookeeper-server-start.sh config/zookeeper.properties
-### Start Kafka Broker
-(general) bayartsogt@ubuntu:~/kafka$ bin/kafka-server-start.sh config/server.properties
+```
 
+### Start Kafka Broker
+```
+bayartsogt@ubuntu:~/kafka$ bin/kafka-server-start.sh config/server.properties
+```
 ### Start Hive MetaStore 
+```
 bayartsogt@ubuntu:~$ hive --service metastore
+```
 
 ### Create Hive Table
+```
 (general) bayartsogt@ubuntu:~$ hive
 hive> show databases;
 OK
@@ -69,13 +76,28 @@ hive> show tables;
 OK
 tweets
 Time taken: 0.066 seconds, Fetched: 1 row(s)
-
+```
 ### Download nltk toolkit
+```python
 >>> import nltk
 >>> nltk.download('brown')
 [nltk_data] Downloading package brown to /home/bayartsogt/nltk_data...
 [nltk_data]   Unzipping corpora/brown.zip.
 True
+```
 ### Start Twitter Producer
 
+First go to `src` folder
+```
+cd ./src
+```
 
+Then run producer by following command:
+```
+python producer.py
+```
+
+Now we will submit the consumer script by following command:
+```
+spark-submit --jars spark-streaming-kafka-0-8-assembly_2.11-2.4.8.jar consumer.py
+```
