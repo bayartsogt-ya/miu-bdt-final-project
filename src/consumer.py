@@ -4,10 +4,11 @@ from pyspark import SparkContext
 from pyspark.sql import SparkSession
 from pyspark.streaming import StreamingContext
 from pyspark.streaming.kafka import KafkaUtils
+from textblob import TextBlob
 
 
 def get_sentiment(tweet):
-    return 1.
+    return TextBlob(tweet).sentiment.polarity
 
 def handle_rdd(rdd):
     if not rdd.isEmpty():
