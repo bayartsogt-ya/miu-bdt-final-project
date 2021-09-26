@@ -13,7 +13,7 @@ def get_sentiment(tweet):
 def handle_rdd(rdd):
     if not rdd.isEmpty():
         global ss
-        df = ss.createDataFrame(rdd, schema=['text', 'words', 'length'])
+        df = ss.createDataFrame(rdd, schema=['text', 'sentiment'])
         df.show()
         df.write.saveAsTable(name='default.tweets', format='hive', mode='append')
 
@@ -25,7 +25,7 @@ ss.sparkContext.setLogLevel('WARN')
 
 ks = KafkaUtils.createDirectStream(ssc, ['tweets'], {'metadata.broker.list': 'localhost:9092'})
 lines = ks.map(lambda x: x[1])
-transform = lines.map(lambda tweet: (tweet, int(len(tweet.split())), int(len(tweet))))
+transform = lines.map(lambda tweet: (tweet, get_sentiment(tweet)))
 transform.foreachRDD(handle_rdd)
 
 ssc.start()
