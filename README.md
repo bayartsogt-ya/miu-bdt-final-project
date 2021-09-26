@@ -28,4 +28,54 @@ Python requirements:
 | kafka-python | 1.4.6 |
 | tweepy | 4.0.0 |
 
+Download spark streaming to kafka util from 
+https://search.maven.org/search?q=a:spark-streaming-kafka-0-8-assembly_2.11
+
+Hive Installer
+http://archive.apache.org/dist/hive/hive-2.3.5/
+
+Spark for Hadoop2
+https://www.apache.org/dyn/closer.lua/spark/spark-3.1.2/spark-3.1.2-bin-hadoop2.7.tgz
+
+Kafka:
+https://kafka.apache.org/downloads
+
+Hadoop2
+https://hadoop.apache.org/release/2.8.5.html
+
+### Start Zookeeper
+bayartsogt@ubuntu:~/kafka$ bin/zookeeper-server-start.sh config/zookeeper.properties
+### Start Kafka Broker
+(general) bayartsogt@ubuntu:~/kafka$ bin/kafka-server-start.sh config/server.properties
+
+### Start Hive MetaStore 
+bayartsogt@ubuntu:~$ hive --service metastore
+
+### Create Hive Table
+(general) bayartsogt@ubuntu:~$ hive
+hive> show databases;
+OK
+default
+Time taken: 1.09 seconds, Fetched: 1 row(s)
+hive> use default;
+OK
+Time taken: 0.061 seconds
+hive> CREATE TABLE tweets (text STRING, sentiment DOUBLE)
+    > ROW FORMAT DELIMITED FIELDS TERMINATED BY '\\|'
+    > STORED AS TEXTFILE;
+OK
+Time taken: 0.72 seconds
+hive> show tables;
+OK
+tweets
+Time taken: 0.066 seconds, Fetched: 1 row(s)
+
+### Download nltk toolkit
+>>> import nltk
+>>> nltk.download('brown')
+[nltk_data] Downloading package brown to /home/bayartsogt/nltk_data...
+[nltk_data]   Unzipping corpora/brown.zip.
+True
+### Start Twitter Producer
+
 
