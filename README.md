@@ -17,8 +17,15 @@ I implemented the sample flow diagram given in the final project instruction
 
 ![Data Flow](./images/data_flow_diagram.png)
 
+Project Parts:
+- **`[1]`** Create your own project for Spark Streaming
+- **`[2]`** Integrate Hive with Part 1
+- **`[3]`** Create a simple demo project for any of the following tools: Kafka
+- **`[4]`** Record a demo of your Presentation of all the above 3 parts.
+
 Things completed here:
-- **`[1]`** Collect stream of tweets filtered by `Joe Biden` and `Donald Trump` using `twitter API v2`
+- **`[1]`** Collect stream of tweets using `twitter API v2`
+    - For example, filtered by `Joe Biden` and `Donald Trump` 
 - **`[3]`** Use it as a producer to kafka topic `tweets`
 - **`[1]`** Use spark streaming api to consume from the topic `tweets`
 - **`[1]`** Implement sentiment analysis on tweet using `textblob` package during spark streaming
