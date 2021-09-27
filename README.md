@@ -78,6 +78,16 @@ bayartsogt@ubuntu:~/kafka$ bin/zookeeper-server-start.sh config/zookeeper.proper
 ```
 bayartsogt@ubuntu:~/kafka$ bin/kafka-server-start.sh config/server.properties
 ```
+
+### Create a Topic
+```
+bayartsogt@ubuntu:~/kafka$ bin/kafka-topics.sh --create --bootstrap-server localhost:9092 --replication-factor 1 --partitions 1 --topic tweets
+```
+
+### Check the topic
+```
+bayartsogt@ubuntu:~/kafka$ bin/kafka-topics.sh --list --bootstrap-server localhost:9092
+```
 ### Start Hive MetaStore 
 ```
 bayartsogt@ubuntu:~$ hive --service metastore
