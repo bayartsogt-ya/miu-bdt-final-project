@@ -8,7 +8,7 @@ import sys
 import re
 from pprint import pprint
 
-TWEET_TOPICS = ['pizza']
+TWEET_TOPICS = ['Joe Biden', 'Donald Trump']
 
 KAFKA_BROKER = 'localhost:9092'
 KAFKA_TOPIC = 'tweets'

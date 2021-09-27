@@ -5,8 +5,25 @@ This repo includes source of the final project implemented as a final project of
 
 
 Topics:
+* Overview
 * Requirements
-* 
+* Project detail
+
+## Overview
+
+> Spark Streaming - Sentiment Analysis
+
+I implemented the sample flow diagram given in the final project instruction
+
+![Data Flow](./images/data_flow_diagram.png)
+
+Things completed here:
+- **`[1]`** Collect stream of tweets filtered by `Joe Biden` and `Donald Trump` using `twitter API v2`
+- **`[3]`** Use it as a producer to kafka topic `tweets`
+- **`[1]`** Use spark streaming api to consume from the topic `tweets`
+- **`[1]`** Implement sentiment analysis on tweet using `textblob` package during spark streaming
+- **`[2]`** Then write it to `hive`
+- **`[4]`** [Recorded demo]()
 
 ## Requirements
 
@@ -43,6 +60,8 @@ https://kafka.apache.org/downloads
 Hadoop2
 https://hadoop.apache.org/release/2.8.5.html
 
+
+## Project detail:
 ### Start Zookeeper
 ```
 bayartsogt@ubuntu:~/kafka$ bin/zookeeper-server-start.sh config/zookeeper.properties
@@ -101,3 +120,43 @@ Now we will submit the consumer script by following command:
 ```
 spark-submit --jars spark-streaming-kafka-0-8-assembly_2.11-2.4.8.jar consumer.py
 ```
+
+
+### Analyze using HIVE
+
+1. Top 5 negative tweets
+```
+select * from tweets where sentiment > -2 order by sentiment limit 5;
+```
+
+![ALT](images/hive_top_5_negative.png)
+
+2. Top 5 positive tweets
+```
+select * from tweets where sentiment > -2 order by sentiment desc limit 5;
+```
+![ALT](images/hive_top_5_positive.png)
+
+3. Total `NOT NULL` tweets:
+```
+select count(*) from tweets where sentiment > -2;
+```
+![ALT](images/hive_number_of_not_null.png)
+
+
+4. Number of negative tweets
+```
+select count(*) from tweets where sentiment > -2 and sentiment < 0;
+```
+![ALT](images/hive_number_of_negative.png)
+
+5. Number of positive tweets
+```
+select count(*) from tweets where sentiment > -2 and sentiment > 0;
+```
+![ALT](images/hive_number_of_positive.png)
+
+### Further improvement:
+- Improve sentiment analysis prediction: `spark-nlp` integration
+- Collect more features (right now only tweet attribute)
+- Comprehensive dashboard for further audience

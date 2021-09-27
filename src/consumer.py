@@ -17,9 +17,9 @@ def handle_rdd(rdd):
         df.show()
         df.write.saveAsTable(name='default.tweets', format='hive', mode='append')
 
-sc = SparkContext(appName="Something")
+sc = SparkContext(appName="FinalProject")
 ssc = StreamingContext(sc, 5)
-ss = SparkSession.builder.appName("Something").config("spark.sql.warehouse.dir", "/user/hive/warehouse").config("hive.metastore.uris", "thrift://localhost:9083").enableHiveSupport().getOrCreate()
+ss = SparkSession.builder.appName("FinalProject").config("spark.sql.warehouse.dir", "/user/hive/warehouse").config("hive.metastore.uris", "thrift://localhost:9083").enableHiveSupport().getOrCreate()
 
 ss.sparkContext.setLogLevel('WARN')
 
