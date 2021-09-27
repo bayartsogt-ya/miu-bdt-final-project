@@ -1,6 +1,11 @@
 # miu-bdt-final-project
 `Twitter API v2 -> Kafka -> Spark Streaming -> Hive`
 
+- Author: Bayartsogt
+- Course: Big Data Technology
+- Professor: Mrudula Mukadam
+- VIDEO LINK: https://web.microsoftstream.com/video/ab44ae0a-7c42-426f-9b9f-7650742d5c41
+
 This repo includes source of the final project implemented as a final project of CS523: Big Data Technology in Maharishi Internation University.
 
 
@@ -30,7 +35,7 @@ Things completed here:
 - **`[1]`** Use spark streaming api to consume from the topic `tweets`
 - **`[1]`** Implement sentiment analysis on tweet using `textblob` package during spark streaming
 - **`[2]`** Then write it to `hive`
-- **`[4]`** [Recorded demo]()
+- **`[4]`** [Recorded demo](https://web.microsoftstream.com/video/ab44ae0a-7c42-426f-9b9f-7650742d5c41)
 
 ## Requirements
 
